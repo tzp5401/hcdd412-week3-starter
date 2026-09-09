@@ -1,32 +1,41 @@
+# The label that appears in the repository's Actions tab for this workflow.
 name: CI
- 
+
+# The trigger. This workflow runs automatically every time a commit is pushed to the main branch.
 on:
   push:
     branches: [ main ]
  
+# Defines one job, run on a fresh Ubuntu virtual machine GitHub provides for free.
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
+        # Pulls the repository's code onto that virtual machine. Without this step, the runner has no files to work with.
         uses: actions/checkout@v4
  
       - name: Set up Node.js
+        # Installs Node.js 20 on the runner, with npm's cache enabled to repeated runs are faster.
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
  
       - name: Install dependencies
+        # Installs the dependencies from package-lock.json exactly.
         run: npm ci
  
       - name: Run tests
+        # Runs the tests automatically on every push.
         run: npm test
  
       - name: Build project
+      # Builds the project automatically on every push.
         run: npm run build
  
       - name: Archive build artifact
+        # Archives the contents of dist/ as a downloadable build artifact attached to this workflow run.
         uses: actions/upload-artifact@v4
         with:
           name: dist

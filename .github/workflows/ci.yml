@@ -23,15 +23,15 @@ jobs:
           cache: 'npm'
  
       - name: Install dependencies
-        # Installs the dependencies from package-lock.json exactly.
+        # Installs the dependencies from package-lock.json exactly (Reason why step 1 pushed package-lock.json - never .gitignore it).
         run: npm ci
  
       - name: Run tests
-        # Runs the tests automatically on every push.
+        # Runs the tests automatically on every push locally (from step 2).
         run: npm test
  
       - name: Build project
-      # Builds the project automatically on every push.
+      # Runs the project automatically on every push (from step 2).
         run: npm run build
  
       - name: Archive build artifact

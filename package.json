@@ -1,0 +1,16 @@
+{
+  "name": "hcdd412-week3-starter",
+  "version": "1.0.0",
+  "description": "HCDD 412 Week 3 starter project — Continuous Delivery & AI-Powered Pipelines. Dependency-free by design: no npm install network step should ever block your pipeline.",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/*.test.js",
+    "build": "node scripts/build.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "UNLICENSED"
+}
